@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Modal } from "@/components/ui/modal";
 import { usestoreModalStore } from "@/hooks/use-store-modal";
 import { useForm } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
@@ -48,12 +48,17 @@ const onSubmit = async (values: z.infer<typeof formSchema>) => {
                                 <FormControl>
                                     <Input placeholder="Biz-Net" {...field}/>
                                 </FormControl>
+                                <FormMessage />
                             </FormItem>
                         )}
                         />
                         <div className="pt-4 space-x-2 flex items-center justify-end w-full">
-                            <Button>Cancel</Button>
-                            <Button>Continue</Button>
+                            <Button 
+                                variant="outline" 
+                                onClick={StoreModal.onClose}>
+                                    Cancel
+                            </Button>
+                            <Button type="submit">Continue</Button>
 
                         </div>
                 </form>
