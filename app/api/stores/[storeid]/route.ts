@@ -1,3 +1,4 @@
+import prismadb from "@/lib/prismadb";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
@@ -20,8 +21,20 @@ export async function PATCH (
         if (!params.storeid) {
             return new NextResponse('Store ID is Required', { status: 400 });
         }
-}
+
     
+        const store = await prismadb.store.updateMany({
+            where:{
+                id: params.storeid,
+                userId
+            },
+            data: {
+                name
+            }
+        });
+
+        return NextResponse.json(store);
+    }
     catch (error) {
         console.log('[STORE_PATCH]', error);
         return new NextResponse('Internal Error', { status: 500 });
