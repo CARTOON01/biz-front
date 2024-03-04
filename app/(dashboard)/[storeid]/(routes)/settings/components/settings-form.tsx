@@ -45,9 +45,10 @@ export const SettingsForm: React.FC<SettingsPageProps> = ({
                 description="Manage your store settings"
             />
             <Button
+            disabled={loading}
             variant="destructive"
             size="icon"
-            onClick={() => {}}
+            onClick={() => setOpen(true)}
             >
                 <Trash className="h-4 w-4" />
             </Button>
