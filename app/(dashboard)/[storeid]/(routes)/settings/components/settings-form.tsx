@@ -33,8 +33,8 @@ export const SettingsForm: React.FC<SettingsPageProps> = ({
         resolver: zodResolver(formSchema),
         defaultValues: initialData
     });
-    const onSubmit = async (values: SettingsFormValues) => {
-        console.log(values);
+    const onSubmit = async (data: SettingsFormValues) => {
+        console.log(data);
     };
     
     return (
