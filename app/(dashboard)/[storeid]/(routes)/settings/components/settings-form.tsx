@@ -1,5 +1,6 @@
 "use client";
 
+import { AlertModal } from "@/components/modals/alert-modal";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Heading } from "@/components/ui/heading";
@@ -11,6 +12,7 @@ import axios from "axios";
 import { Trash } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
+import { findDOMNode } from "react-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import * as z  from "zod";
@@ -50,9 +52,30 @@ export const SettingsForm: React.FC<SettingsPageProps> = ({
             setLoading(false);
         }
     };
+
+    const onDelete = async () => {
+    try {
+        setLoading(true);
+        await axios.delete(`/api/stores/${params.storeid}`);
+        router.refresh();
+        router.push("/");
+        toast.success("Store deleted");
+    } catch (error) {
+        toast.error("Make sure You removed all products and orders before deleting the store.")
+    } finally {
+        setLoading(false);
+        setOpen(false);
+    }
+};
     
     return (
         <>
+        <AlertModal 
+            isOpen={open}
+            onClose={() => setOpen(false)}
+            onConfirm={onDelete}
+            loading={loading}
+        />
         <div className="flex items-center justify-between">
             <Heading 
                 title="Settings"
