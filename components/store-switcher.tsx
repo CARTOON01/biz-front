@@ -2,7 +2,6 @@
 
 import { Store } from "@prisma/client";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-import { usestoreModalStore } from "@/hooks/use-store-modal";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "./ui/button";
@@ -17,6 +16,7 @@ import {
     CommandList, 
     CommandSeparator
     } from "./ui/command";
+import { usestoreModalStore } from "@/hooks/use-store-modal";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
@@ -65,8 +65,8 @@ export default function StoreSwitcher({
             <PopoverContent className="w-[200px] p-0">
                 <Command>
                     <CommandList>
-                        <CommandInput placeholder="Search stores..." />
-                        <CommandEmpty>No Stores Found</CommandEmpty>
+                        <CommandInput placeholder="Search store..." />
+                        <CommandEmpty>No Store Found</CommandEmpty>
                         <CommandGroup heading="stores">
                             {formattedItems.map((store) => (
                                 <CommandItem 
@@ -80,7 +80,7 @@ export default function StoreSwitcher({
                                         className={cn(
                                         "ml-auto h-4 w-4",
                                         currentStore?.value === store.value
-                                        ? "opecity-100"
+                                        ? "opacity-100"
                                         : "opacity-0"
                                         )}
                                     />
@@ -94,7 +94,7 @@ export default function StoreSwitcher({
                         <CommandGroup>
                             <CommandItem
                                 onSelect={() => {
-                                    setOpen(false)
+                                    setOpen(false);
                                     storeModal.onOpen();
                                 }}
                             >
