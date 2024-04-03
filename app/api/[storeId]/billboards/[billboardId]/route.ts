@@ -76,7 +76,8 @@ export async function PATCH (
         console.log('[BILLBOARD_PATCH]', error);
         return new NextResponse('Internal Error', { status: 500 });
     }
-}
+};
+
 export async function DELETE (
     req: Request,
     { params }: { params: { storeId: string, billboardId: string}}
@@ -114,4 +115,4 @@ export async function DELETE (
         console.log('[BILLBOARD_DELETE]', error);
         return new NextResponse('Internal Error', { status: 500 });
     }
-}
+};
