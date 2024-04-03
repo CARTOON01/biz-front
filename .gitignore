@@ -9,6 +9,7 @@
 # testing
 /coverage
 /.vercel
+/.github
 
 # next.js
 /.next/
