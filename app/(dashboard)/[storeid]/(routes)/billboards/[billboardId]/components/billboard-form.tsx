@@ -56,12 +56,17 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
             imageUrl: ''
         }
     });
+
     const onSubmit = async (data: BillboardFormValues) => {
         try {
             setLoading(true);
-            await axios.patch(`/api/stores/${params.storeid}`, data);
+            if (initialData) {
+                await axios.patch(`/api/${params.storeId}/billboards/${params.billboardId}`, data);   
+            } else {
+                await axios.post(`/api/${params.storeId}/billboards`, data);
+            }
             router.refresh();
-            toast.success("Store updated");
+            toast.success(toatsMessage);
         } catch (error) {
             toast.error("Something went wrong");
         } finally {
@@ -72,17 +77,17 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
     const onDelete = async () => {
     try {
         setLoading(true);
-        await axios.delete(`/api/stores/${params.storeid}`);
+        await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`);
         router.refresh();
         router.push("/");
-        toast.success("Store deleted");
+        toast.success("Billboard deleted");
     } catch (error) {
-        toast.error("Make sure You removed all products and orders before deleting the store.")
+        toast.error("Make sure You removed all categories using this billboard first.")
     } finally {
         setLoading(false);
         setOpen(false);
     }
-};
+}
     
     return (
         <>
@@ -129,21 +134,21 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
                     </FormItem>
                     )}
             />
-                <div className="grid grid-cols-3 gap-8">
-                    <FormField 
-                        control={form.control}
-                        name="label"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Label</FormLabel>
-                                <FormControl>
-                                    <Input disabled={loading} placeholder="Billboard label" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                </div>
+            <div className="grid grid-cols-3 gap-8">
+                <FormField 
+                    control={form.control}
+                    name="label"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Label</FormLabel>
+                            <FormControl>
+                                <Input disabled={loading} placeholder="Billboard label" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+            </div>
                 <Button disabled={loading} className="ml-auto" type="submit">
                     {action}
                 </Button>

@@ -46,7 +46,7 @@ export const SettingsForm: React.FC<SettingsPageProps> = ({
     const onSubmit = async (data: SettingsFormValues) => {
         try {
             setLoading(true);
-            await axios.patch(`/api/stores/${params.storeid}`, data);
+            await axios.patch(`/api/stores/${params.storeId}`, data);
             router.refresh();
             toast.success("Store updated");
         } catch (error) {
@@ -59,7 +59,7 @@ export const SettingsForm: React.FC<SettingsPageProps> = ({
     const onDelete = async () => {
     try {
         setLoading(true);
-        await axios.delete(`/api/stores/${params.storeid}`);
+        await axios.delete(`/api/stores/${params.storeId}`);
         router.refresh();
         router.push("/");
         toast.success("Store deleted");
@@ -120,7 +120,7 @@ export const SettingsForm: React.FC<SettingsPageProps> = ({
         <Separator />
         <ApiAlert 
             title="NEXT_PUBLIC_API_URL" 
-            description={`${origin}/api/${params.storeid}`}
+            description={`${origin}/api/${params.storeId}`}
             variant="public"
         />
         </>
