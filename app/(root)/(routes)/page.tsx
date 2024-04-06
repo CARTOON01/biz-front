@@ -1,7 +1,6 @@
 "use client";
 
 import { usestoreModalStore } from "@/hooks/use-store-modal";
-import { on } from "events";
 import { useEffect } from "react";
 
 const SetupPage = () => {
