@@ -16,10 +16,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { AlertModal } from "@/components/modals/alert-modal";
 
-import { SizeColumn } from "./columns";
+import { ColorColumn } from "./columns";
 
 interface CellActionProps {
-    data: SizeColumn;
+    data: ColorColumn;
 };
 
 export const CellAction: React.FC<CellActionProps> = ({
@@ -33,17 +33,17 @@ export const CellAction: React.FC<CellActionProps> = ({
 
     const onCopy = (id: string) => {
         navigator.clipboard.writeText(id);
-        toast.success("Sizes Id Copied to the Clipboard.");
+        toast.success("Color Id Copied to the Clipboard.");
     };
 
     const onDelete = async () => {
         try {
             setLoading(true);
-            await axios.delete(`/api/${params.storeId}/sizes/${data.id}`);
+            await axios.delete(`/api/${params.storeId}/colors/${data.id}`);
             router.refresh();
-            toast.success("Size deleted");
+            toast.success("Color deleted");
         } catch (error) {
-            toast.error("Make sure You removed all Products using this size first.")
+            toast.error("Make sure You removed all Products using this color first.")
         } finally {
             setLoading(false);
             setOpen(false);
