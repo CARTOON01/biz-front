@@ -7,8 +7,13 @@ import { Urbanist } from "next/font/google";
 const font = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+<<<<<<< HEAD
   title: "Store",
   description: "Store",
+=======
+  title: "Admin Dashboard",
+  description: "Cartoon Creations",
+>>>>>>> 0e15998 (Fix an error on storeId)
 };
 
 export default function RootLayout({
