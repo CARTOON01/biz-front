@@ -1,11 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 34cfcbc684ed8f20bfcea963f4aca66fb7e434d0
 html,
 body,
 :root {
   height: 100%;
+<<<<<<< HEAD
 }
 @layer base {
   :root {
@@ -78,4 +83,6 @@ body,
   body {
     @apply bg-background text-foreground;
   }
+=======
+>>>>>>> 34cfcbc684ed8f20bfcea963f4aca66fb7e434d0
 }

@@ -16,7 +16,11 @@ import {
     CommandList, 
     CommandSeparator
     } from "./ui/command";
+<<<<<<< HEAD
 import { usestoreModalStore } from "@/hooks/use-store-modal";
+=======
+import { useStoreModal } from "@/hooks/use-store-modal";
+>>>>>>> 34cfcbc684ed8f20bfcea963f4aca66fb7e434d0
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 
@@ -28,7 +32,11 @@ export default function StoreSwitcher({
     className,
     items = []
 }: StoreSwitcherProps) {
+<<<<<<< HEAD
     const storeModal = usestoreModalStore();
+=======
+    const storeModal = useStoreModal();
+>>>>>>> 34cfcbc684ed8f20bfcea963f4aca66fb7e434d0
     const params = useParams();
     const router = useRouter();
 

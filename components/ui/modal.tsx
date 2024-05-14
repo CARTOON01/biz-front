@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 "use client"
+=======
+"use client";
+>>>>>>> 34cfcbc684ed8f20bfcea963f4aca66fb7e434d0
 
 import { 
     Dialog, 
@@ -6,7 +10,11 @@ import {
     DialogDescription, 
     DialogHeader, 
     DialogTitle 
+<<<<<<< HEAD
 } from "./dialog";
+=======
+} from "@/components/ui/dialog";
+>>>>>>> 34cfcbc684ed8f20bfcea963f4aca66fb7e434d0
 
 interface ModalProps {
     title: string;

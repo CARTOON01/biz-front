@@ -8,8 +8,11 @@
 
 # testing
 /coverage
+<<<<<<< HEAD
 /.vercel
 /.github
+=======
+>>>>>>> 34cfcbc684ed8f20bfcea963f4aca66fb7e434d0
 
 # next.js
 /.next/
